@@ -4,6 +4,7 @@
   "description": "A tool for looking up to cangjie(倉頡) code.",
   "main": "index.js",
   "scripts": {
+    "pretest": "npm run lint",
     "test": "./node_modules/.bin/mocha test/",
     "lint": "./node_modules/.bin/eslint ."
   },
