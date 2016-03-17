@@ -1,0 +1,22 @@
+{
+  "name": "cangjie-lookup",
+  "version": "1.0.0",
+  "description": "A tool for looking up to cangjie(倉頡) code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geniusgordon/cangjie-lookup.git"
+  },
+  "keywords": [
+    "cangjie"
+  ],
+  "author": "Gordon <geniusgordon@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geniusgordon/cangjie-lookup/issues"
+  },
+  "homepage": "https://github.com/geniusgordon/cangjie-lookup#readme"
+}
