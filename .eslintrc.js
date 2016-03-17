@@ -5,7 +5,10 @@ module.exports = {
   },
   "extends": "eslint:recommended",
   "rules": {
-    "no-console": 0,
+    "comma-dangle": [
+      "error",
+      "always-multiline",
+    ],
     "indent": [
       "error",
       2
@@ -14,6 +17,7 @@ module.exports = {
       "error",
       "unix"
     ],
+    "no-console": 0,
     "quotes": [
       "error",
       "single"
