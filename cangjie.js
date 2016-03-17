@@ -1,4 +1,4 @@
-module.exports.cangjie = {
+const cangjie = {
   A: '日',
   B: '月',
   C: '金',
@@ -27,9 +27,28 @@ module.exports.cangjie = {
   Z: 'Z',
 };
 
+var cangjieReverse = Object.keys(cangjie).reduce((obj, key) => {
+  obj[cangjie[key]] = key;
+  return obj;
+}, {});
+
+module.exports.cangjie = cangjie;
+module.exports.cangjieReverse = cangjieReverse;
+
 module.exports.keyToCangjie = function(string) {
-}
+  if (!string) return;
+  return string.toUpperCase().split('').filter((c) => {
+    return cangjie[c] !== undefined;
+  }).map((c) => {
+    return cangjie[c];
+  }).join('');
+};
 
 module.exports.cangjieToKey = function(string) {
-}
+  return string.split('').filter((c) => {
+    return cangjieReverse[c] !== undefined;
+  }).map((c) => {
+    return cangjieReverse[c];
+  }).join('');
+};
 

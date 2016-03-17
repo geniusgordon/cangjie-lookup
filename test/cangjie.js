@@ -1,6 +1,14 @@
 var expect = require('expect');
 var cangjie = require('../cangjie');
 
+describe('cangjieReverse', function() {
+  it('check cangjieReverse', function() {
+    Object.keys(cangjie.cangjie).forEach((c) => {
+      expect(cangjie.cangjieReverse[cangjie.cangjie[c]]).toBe(c);
+    });
+  });
+});
+
 describe('keyToCangjie', function() {
   it('should convert QWERTY to 手田水口廿卜', function() {
     expect(cangjie.keyToCangjie('QWERTY')).toBe('手田水口廿卜');
@@ -12,6 +20,10 @@ describe('keyToCangjie', function() {
 
   it('should ignore unknown characters', function() {
     expect(cangjie.keyToCangjie('Q?W?E?R?T?Y')).toBe('手田水口廿卜');
+  });
+
+  it('should return nothing when given nothing', function() {
+    expect(cangjie.keyToCangjie()).toNotExist();
   });
 });
 
