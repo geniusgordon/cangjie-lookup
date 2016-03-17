@@ -22,6 +22,8 @@
   "homepage": "https://github.com/geniusgordon/cangjie-lookup#readme",
   "dependencies": {
     "eslint": "^2.4.0",
+    "expect": "^1.15.2",
+    "mocha": "^2.4.5",
     "request": "^2.69.0"
   }
 }
