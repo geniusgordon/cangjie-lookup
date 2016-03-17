@@ -4,7 +4,8 @@
   "description": "A tool for looking up to cangjie(倉頡) code.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint ."
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/geniusgordon/cangjie-lookup/issues"
   },
-  "homepage": "https://github.com/geniusgordon/cangjie-lookup#readme"
+  "homepage": "https://github.com/geniusgordon/cangjie-lookup#readme",
+  "dependencies": {
+    "eslint": "^2.4.0",
+    "request": "^2.69.0"
+  }
 }
