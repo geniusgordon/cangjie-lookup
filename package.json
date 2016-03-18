@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/geniusgordon/cangjie-lookup#readme",
   "dependencies": {
+    "cheerio": "^0.20.0",
     "eslint": "^2.4.0",
     "expect": "^1.15.2",
     "mocha": "^2.4.5",
