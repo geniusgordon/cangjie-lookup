@@ -6,7 +6,7 @@ const url = 'http://www.chinesecj.com/cj5dict/index.php';
 
 function query(word, done) {
   if (typeof word !== 'string') {
-    done('Not a string.');
+    done(new Error('Not a string.'));
     return;
   }
   request.get({
@@ -26,10 +26,20 @@ function parse(html) {
   return $(cssSelector).text();
 }
 
-module.exports.lookup = function(word, done) {
-  query(word, (err, html) => {
-    var result = parse(html);
-    done(err, cangjie.keyToCangjie(result));
+module.exports.lookup = function(string, done) {
+  if (typeof string !== 'string') {
+    throw new Error('Not a string.');
+  }
+  var result = {};
+  var count = 0;
+  string.split('').forEach((word) => {
+    query(word, (err, html) => {
+      result[word] = cangjie.keyToCangjie(parse(html));
+      count++;
+      if (count === string.length) {
+        done(err, result);
+      }
+    });
   });
 };
 
