@@ -12,9 +12,11 @@ A tool for converting Chinese character into cangjie version 5 (第五代倉頡)
 
 ### CLI
 
+```
 		$ cangjie -s 你好
     你: 人弓火
     好: 女弓木
+```
 
 ### nodejs
 
