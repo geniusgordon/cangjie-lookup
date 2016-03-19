@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+var lookup = require('../lib/lookup').lookup;
+
+var argv = require('optimist')
+  .usage('Usage: cangjie -s [string]')
+  .demand('s')
+  .alias('s', 'string')
+  .string('s')
+  .describe('s', 'String to lookup')
+  .argv;
+
+lookup(argv.s, (err, result) => {
+  if (err) {
+    throw err;
+  }
+  argv.s.split('').forEach((c) => {
+    if (result[c]) {
+      console.log(`${c}: ${result[c]}`);
+    }
+  });
+});
+
