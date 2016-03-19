@@ -2,7 +2,7 @@
   "name": "cangjie-lookup",
   "version": "1.0.0",
   "description": "A tool for looking up to cangjie(倉頡) code.",
-  "main": "index.js",
+  "main": "./lib/lookup",
   "scripts": {
     "pretest": "npm run lint",
     "test": "./node_modules/.bin/mocha test/",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/geniusgordon/cangjie-lookup#readme",
   "dependencies": {
     "cheerio": "^0.20.0",
+    "optimist": "^0.6.1",
     "request": "^2.69.0"
   },
   "devDependencies": {
