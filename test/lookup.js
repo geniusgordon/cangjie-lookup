@@ -1,5 +1,5 @@
 var expect = require('expect');
-var lookup = require('../lookup');
+var lookup = require('../lib/lookup');
 
 describe('lookup', function() {
   it('should convert 你 to 人弓火', function(done) {
