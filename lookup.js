@@ -6,7 +6,7 @@ const url = 'http://www.chinesecj.com/cj5dict/index.php';
 
 function query(word, done) {
   if (typeof word !== 'string') {
-    done(new Error('Not a string.'));
+    done && done(new Error('Not a string.'));
     return;
   }
   request.get({
@@ -16,7 +16,7 @@ function query(word, done) {
       cj: word[0],
     },
   }, (err, res, body) => {
-    done(err, body);
+    done && done(err, body);
   });
 }
 
@@ -28,7 +28,8 @@ function parse(html) {
 
 module.exports.lookup = function(string, done) {
   if (typeof string !== 'string') {
-    throw new Error('Not a string.');
+    done && done(new Error('Not a string.'));
+    return;
   }
   var result = {};
   var count = 0;
@@ -37,7 +38,7 @@ module.exports.lookup = function(string, done) {
       result[word] = cangjie.keyToCangjie(parse(html));
       count++;
       if (count === string.length) {
-        done(err, result);
+        done && done(err, result);
       }
     });
   });
