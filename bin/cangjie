@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
-var lookup = require('../lib/lookup').lookup;
+var decompose = require('../lib/decompose').decompose;
 
 var argv = require('optimist')
   .usage('Usage: cangjie -s [string]')
   .demand('s')
   .alias('s', 'string')
   .string('s')
-  .describe('s', 'String to lookup')
+  .describe('s', 'String to decompose')
   .argv;
 
-lookup(argv.s, (err, result) => {
+decompose(argv.s, (err, result) => {
   if (err) {
     throw err;
   }

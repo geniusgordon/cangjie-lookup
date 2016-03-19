@@ -5,7 +5,7 @@
   "bin": {
     "cangjie": "./bin/cangjie"
   },
-  "main": "./lib/lookup",
+  "main": "./lib/decompose",
   "scripts": {
     "pretest": "npm run lint",
     "test": "./node_modules/.bin/mocha test/",
