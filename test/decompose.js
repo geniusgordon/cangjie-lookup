@@ -25,5 +25,26 @@ describe('decompose', function() {
       done();
     });
   });
+
+  it('should get err in callback', function(done) {
+    decompose.decompose(null, (err, result) => {
+      expect(err).toExist();
+      done();
+    });
+  });
+
+  it('should be able to use promises', function(done) {
+    decompose.decompose('你').then((result) => {
+      expect(result).toEqual({'你': '人弓火'});
+      done();
+    });
+  });
+
+  it('should catch err in promise', function(done) {
+    decompose.decompose(null).catch((err) => {
+      expect(err).toExist();
+      done();
+    });
+  });
 });
 
