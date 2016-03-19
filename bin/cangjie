@@ -2,19 +2,23 @@
 
 var decompose = require('../lib/decompose').decompose;
 
-var argv = require('optimist')
-  .usage('Usage: cangjie -s [string]')
-  .demand('s')
-  .alias('s', 'string')
-  .string('s')
-  .describe('s', 'String to decompose')
+var argv = require('yargs')
+  .check((argv) => {
+    if (argv._.length === 0) {
+      throw new Error('No string given.');
+    }
+    return true;
+  })
+  .usage('Usage: cangjie [string]')
   .argv;
 
-decompose(argv.s, (err, result) => {
+var s = argv._.join('');
+
+decompose(s, (err, result) => {
   if (err) {
     throw err;
   }
-  argv.s.split('').forEach((c) => {
+  s.split('').forEach((c) => {
     if (result[c]) {
       console.log(`${c}: ${result[c]}`);
     }
