@@ -28,3 +28,9 @@ decompose('你好', (err, result) => {
 });
 ```
 
+You can also use promises
+```js
+decompose('你好').then((result) => {
+  // result = {'你': '人弓火',  '好': '女弓木'};
+});
+```
