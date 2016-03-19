@@ -1,8 +1,11 @@
 {
-  "name": "cangjie-lookup",
+  "name": "cangjie-code",
   "version": "1.0.0",
-  "description": "A tool for looking up to cangjie(倉頡) code.",
-  "main": "index.js",
+  "description": "A tool for converting Chinese character into cangjie version 5 (第五代倉頡) code.",
+  "bin": {
+    "cangjie": "./bin/cangjie"
+  },
+  "main": "./lib/decompose",
   "scripts": {
     "pretest": "npm run lint",
     "test": "./node_modules/.bin/mocha test/",
@@ -10,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geniusgordon/cangjie-lookup.git"
+    "url": "git+https://github.com/geniusgordon/cangjie-code.git"
   },
   "keywords": [
     "cangjie"
@@ -18,11 +21,12 @@
   "author": "Gordon <geniusgordon@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/geniusgordon/cangjie-lookup/issues"
+    "url": "https://github.com/geniusgordon/cangjie-code/issues"
   },
-  "homepage": "https://github.com/geniusgordon/cangjie-lookup#readme",
+  "homepage": "https://github.com/geniusgordon/cangjie-code#readme",
   "dependencies": {
     "cheerio": "^0.20.0",
+    "optimist": "^0.6.1",
     "request": "^2.69.0"
   },
   "devDependencies": {

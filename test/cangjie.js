@@ -1,5 +1,5 @@
 var expect = require('expect');
-var cangjie = require('../cangjie');
+var cangjie = require('../lib/cangjie');
 
 describe('cangjieReverse', function() {
   it('check cangjieReverse', function() {
