@@ -18,6 +18,14 @@ describe('decompose', function() {
     });
   });
 
+  it('should convert 資 to 戈人月山金一人月山金 (two codes)', function(done) {
+    decompose.decompose('資', (err, result) => {
+      expect(err).toNotExist();
+      expect(result).toEqual({'資': '戈人月山金一人月山金'});
+      done();
+    });
+  });
+
   it('should convert multiple words', function(done) {
     decompose.decompose('你好', (err, result) => {
       expect(err).toNotExist();
