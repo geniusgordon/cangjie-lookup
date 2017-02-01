@@ -31,18 +31,20 @@ export const keyMapping = {
 
 export const keyMappingReverse = invert(keyMapping);
 
-export const keyToCangjie = (string) => {
+export const keyToCangjie = string => {
   if (!string) return null;
-  return string.toUpperCase().split('')
-    .filter((c) => !!keyMapping[c])
-    .map((c) => keyMapping[c])
+  return string
+    .toUpperCase()
+    .split('')
+    .filter(c => !!keyMapping[c])
+    .map(c => keyMapping[c])
     .join('');
 };
 
-export const cangjieToKey = (string) => {
-  return string.split('')
-    .filter((c) => !!keyMappingReverse[c])
-    .map((c) => keyMappingReverse[c])
+export const cangjieToKey = string => {
+  return string
+    .split('')
+    .filter(c => !!keyMappingReverse[c])
+    .map(c => keyMappingReverse[c])
     .join('');
 };
-
