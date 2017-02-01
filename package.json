@@ -1,6 +1,6 @@
 {
   "name": "cangjie-code",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A tool for converting Chinese character into cangjie version 5 (第五代倉頡) code.",
   "bin": {
     "cangjie": "./bin/cangjie"
