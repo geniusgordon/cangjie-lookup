@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var decompose = require('../lib/decompose').decompose;
+var chalk = require('chalk');
+var decompose = require('../lib/decompose').default;
 
 var argv = require('yargs')
   .check((argv) => {
@@ -15,13 +16,11 @@ var argv = require('yargs')
 
 var s = argv._.join('');
 
-decompose(s, (err, result) => {
-  if (err) {
-    throw err;
-  }
+decompose(s).then((result) => {
   s.split('').forEach((c) => {
     if (result[c]) {
-      console.log(`${c}: ${result[c]}`);
+      const output = result[c].map((r) => `${r.code} ` + chalk.dim(`(${r.key})`)).join('\n    ');
+      console.log(`${c}: ${output}`);
     }
   });
 });
