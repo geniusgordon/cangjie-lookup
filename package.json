@@ -8,8 +8,8 @@
   "main": "./lib/decompose",
   "scripts": {
     "pretest": "npm run lint",
-    "test": "./node_modules/.bin/mocha test/",
-    "lint": "./node_modules/.bin/eslint ."
+    "test": "jest",
+    "lint": "eslint lib"
   },
   "repository": {
     "type": "git",
@@ -25,12 +25,13 @@
   },
   "homepage": "https://github.com/geniusgordon/cangjie-code#readme",
   "dependencies": {
-    "yargs": "^4.3.1",
-    "csv-parse": "1.1.7"
+    "csv-parse": "^1.2.0",
+    "yargs": "^6.6.0"
   },
   "devDependencies": {
-    "eslint": "^2.4.0",
-    "expect": "^1.15.2",
-    "mocha": "^2.4.5"
+    "babel-jest": "^18.0.0",
+    "babel-preset-env": "^1.1.8",
+    "eslint": "^3.14.1",
+    "jest": "^18.1.0"
   }
 }
