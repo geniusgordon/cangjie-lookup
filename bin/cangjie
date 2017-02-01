@@ -10,6 +10,7 @@ var argv = require('yargs')
     return true;
   })
   .usage('Usage: cangjie [string]')
+  .version()
   .argv;
 
 var s = argv._.join('');
