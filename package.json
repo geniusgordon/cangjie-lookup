@@ -10,7 +10,8 @@
     "build": "babel src -d lib",
     "lint": "eslint src",
     "test": "jest",
-    "posttest": "npm run lint"
+    "posttest": "npm run lint",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,9 @@ A tool for converting Chinese character into cangjie version 5 (第五代倉頡)
 
 ### Installation
 
-    npm install -g cangjie-code
+```bash
+npm install -g cangjie-code
+```
 
 ## Usage
 
@@ -15,22 +17,21 @@ A tool for converting Chinese character into cangjie version 5 (第五代倉頡)
 
 ```
 $ cangjie 你好
-你: 人弓火
-好: 女弓木
+你: 人弓火 (onf)
+好: 女弓木 (vnd)
 ```
 
-### nodejs
+### API
 
 ```js
-var decompose = require('cangjie-code').decompose;
-decompose('你好', (err, result) => {
-  // result = {'你': '人弓火',  '好': '女弓木'};
-});
-```
+import decompose from 'cangjie-code';
+// var decompose = require('cangjie-code').default;
 
-You can also use promises
-```js
 decompose('你好').then((result) => {
-  // result = {'你': '人弓火',  '好': '女弓木'};
+  // result = {
+  //   '你': [{ key: 'onf', code: '人弓火' }],
+  //   '好': [{ key: 'vnd', code: '女弓木' }],
+  // };
 });
 ```
+
