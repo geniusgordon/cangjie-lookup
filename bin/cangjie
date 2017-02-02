@@ -12,12 +12,19 @@ var program = commander
   .parse(process.argv);
 
 if (program.history) {
-  history.loadHistory().then(decomposeAndOutput);
+  history.loadHistory().then(words => {
+    if (words.length === 0) {
+      console.log('No history.');
+      return;
+    }
+    decomposeAndOutput(words);
+  });
 } else if (program.args.length === 0) {
   program.help();
 }
 
-decomposeAndOutput(program.args.join('').split(''));
+decomposeAndOutput(program.args.join('').split(''))
+  .then(() => history.saveHistory(program.args.join('')));
 
 function decomposeAndOutput(words) {
   const string = words.join('');
@@ -30,7 +37,6 @@ function decomposeAndOutput(words) {
         console.log(`${word}: ${output}`);
       });
     })
-    .then(() => history.saveHistory(string))
     .catch(console.error);
 }
 
