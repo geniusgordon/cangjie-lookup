@@ -33,4 +33,3 @@ export default async words => {
   const result = await Promise.all(words.split('').map(query));
   return fromPairs(result);
 };
-

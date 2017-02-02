@@ -23,20 +23,18 @@ if (program.history) {
   program.help();
 }
 
-decomposeAndOutput(program.args.join('').split(''))
-  .then(() => history.saveHistory(program.args.join('')));
+decomposeAndOutput(
+  program.args.join('').split(''),
+).then(() => history.saveHistory(program.args.join('')));
 
 function decomposeAndOutput(words) {
   const string = words.join('');
-  return decompose(string)
-    .then(result => {
-      words.forEach(word => {
-        const output = result[word]
-          .map(r => `${r.code} ` + chalk.dim(`(${r.key})`))
-          .join('\n    ');
-        console.log(`${word}: ${output}`);
-      });
-    })
-    .catch(console.error);
+  return decompose(string).then(result => {
+    words.forEach(word => {
+      const output = result[word]
+        .map(r => `${r.code} ` + chalk.dim(`(${r.key})`))
+        .join('\n    ');
+      console.log(`${word}: ${output}`);
+    });
+  }).catch(console.error);
 }
-
