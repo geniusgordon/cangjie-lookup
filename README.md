@@ -16,7 +16,30 @@ npm install -g cangjie-code
 ### CLI
 
 ```
+$ cangjie --help
+
+  Usage: cangjie [options] <words>
+
+  Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
+    -H, --history  Show history
+
+```
+
+Query
+
+```
 $ cangjie 你好
+你: 人弓火 (onf)
+好: 女弓木 (vnd)
+```
+
+Show history
+
+```
+$ cangjie --history
 你: 人弓火 (onf)
 好: 女弓木 (vnd)
 ```
