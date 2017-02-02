@@ -1,9 +1,11 @@
+// @flow
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 
-const historyFileName = path.resolve(process.env.HOME, '.cangjie_history');
+const historyFileName = path.resolve(os.homedir(), '.cangjie_history');
 
-export const loadHistory = async () => {
+export const loadHistory = async (): Promise<Array<string>> => {
   try {
     const history = await new Promise((resolve, reject) =>
       fs.readFile(
@@ -16,6 +18,6 @@ export const loadHistory = async () => {
   }
 };
 
-export const saveHistory = word =>
+export const saveHistory = (word: string): Promise<void> =>
   new Promise((resolve, reject) =>
     fs.appendFile(historyFileName, word, err => err ? reject(err) : resolve()));

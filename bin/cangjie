@@ -1,40 +1,4 @@
-#!/usr/bin/env node
+#!/bin/bash
 
-var chalk = require('chalk');
-var commander = require('commander');
-var decompose = require('../lib/decompose').default;
-var history = require('../lib/history');
-
-var program = commander
-  .version(require('../package.json').version)
-  .arguments('<words>')
-  .option('-H, --history', 'Show history')
-  .parse(process.argv);
-
-if (program.history) {
-  history.loadHistory().then(words => {
-    if (words.length === 0) {
-      console.log('No history.');
-      return;
-    }
-    decomposeAndOutput(words);
-  });
-} else if (program.args.length === 0) {
-  program.help();
-}
-
-decomposeAndOutput(
-  program.args.join('').split(''),
-).then(() => history.saveHistory(program.args.join('')));
-
-function decomposeAndOutput(words) {
-  const string = words.join('');
-  return decompose(string).then(result => {
-    words.forEach(word => {
-      const output = result[word]
-        .map(r => `${r.code} ` + chalk.dim(`(${r.key})`))
-        .join('\n    ');
-      console.log(`${word}: ${output}`);
-    });
-  }).catch(console.error);
-}
+DIR=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd )
+node ${DIR}/../lib/cli.js $@

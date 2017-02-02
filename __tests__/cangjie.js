@@ -26,8 +26,8 @@ describe('keyToCangjie', () => {
     expect(keyToCangjie('Q?W?E?R?T?Y')).toBe('手田水口廿卜');
   });
 
-  it('should return nothing when given nothing', () => {
-    expect(keyToCangjie()).toBeNull();
+  it('should return empty string when given nothing', () => {
+    expect(keyToCangjie()).toBe('');
   });
 });
 

@@ -1,3 +1,4 @@
+// @flow
 import invert from 'lodash/invert';
 
 export const keyMapping = {
@@ -31,8 +32,8 @@ export const keyMapping = {
 
 export const keyMappingReverse = invert(keyMapping);
 
-export const keyToCangjie = string => {
-  if (!string) return null;
+export const keyToCangjie = (string: string): string => {
+  if (!string) return '';
   return string
     .toUpperCase()
     .split('')
@@ -41,10 +42,8 @@ export const keyToCangjie = string => {
     .join('');
 };
 
-export const cangjieToKey = string => {
-  return string
-    .split('')
-    .filter(c => !!keyMappingReverse[c])
-    .map(c => keyMappingReverse[c])
-    .join('');
-};
+export const cangjieToKey = (string: string): string => string
+  .split('')
+  .filter(c => !!keyMappingReverse[c])
+  .map(c => keyMappingReverse[c])
+  .join('');
