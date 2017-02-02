@@ -26,16 +26,11 @@ async function query(word) {
   const result = data
     .filter(d => d[1] == word[0])
     .map(d => ({ key: d[0], code: keyToCangjie(d[0]) }));
-  if (result.length === 0) {
-    throw new Error('Not found.');
-  }
   return [word, result];
 }
 
-export default async string => {
-  if (typeof string !== 'string') {
-    throw new TypeError(`Expect string but got ${typeof string}: ${string}.`);
-  }
-  const result = await Promise.all(string.split('').map(query));
+export default async words => {
+  const result = await Promise.all(words.split('').map(query));
   return fromPairs(result);
 };
+

@@ -1,27 +1,36 @@
 #!/usr/bin/env node
 
 var chalk = require('chalk');
+var commander = require('commander');
 var decompose = require('../lib/decompose').default;
+var history = require('../lib/history');
 
-var argv = require('yargs')
-  .check((argv) => {
-    if (argv._.length === 0) {
-      throw new Error('No string given.');
-    }
-    return true;
-  })
-  .usage('Usage: cangjie [string]')
-  .version()
-  .argv;
+var program = commander
+  .version(require('../package.json').version)
+  .arguments('<words>')
+  .option('-H, --history', 'Show history')
+  .parse(process.argv);
 
-var s = argv._.join('');
+if (program.history) {
+  history.loadHistory().then(decomposeAndOutput);
+} else if (program.args.length === 0) {
+  program.help();
+}
 
-decompose(s).then((result) => {
-  s.split('').forEach((c) => {
-    if (result[c]) {
-      const output = result[c].map((r) => `${r.code} ` + chalk.dim(`(${r.key})`)).join('\n    ');
-      console.log(`${c}: ${output}`);
-    }
-  });
-});
+decomposeAndOutput(program.args.join('').split(''));
+
+function decomposeAndOutput(words) {
+  const string = words.join('');
+  return decompose(string)
+    .then(result => {
+      words.forEach(word => {
+        const output = result[word]
+          .map(r => `${r.code} ` + chalk.dim(`(${r.key})`))
+          .join('\n    ');
+        console.log(`${word}: ${output}`);
+      });
+    })
+    .then(() => history.saveHistory(string))
+    .catch(console.error);
+}
 
