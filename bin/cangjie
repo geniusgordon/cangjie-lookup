@@ -1,3 +1,4 @@
 #!/bin/bash
 
-node lib/cli.js $@
+DIR=$(dirname $(realpath ${BASH_SOURCE[0]}))
+node $DIR/../lib/cli.js $@
