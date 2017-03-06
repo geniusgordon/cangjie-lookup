@@ -17,10 +17,15 @@ it('should save and load history', async () => {
   expect(history).toEqual([a, b]);
 });
 
-
 it('should append history', async () => {
   await saveHistory(c);
   const history = await loadHistory();
   expect(history).toEqual([a, b, c]);
 });
 
+it('should skip spaces', async () => {
+  await saveHistory(' ');
+  await saveHistory(c);
+  const history = await loadHistory();
+  expect(history).toEqual([a, b, c, c]);
+});
