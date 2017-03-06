@@ -7,7 +7,7 @@ import {
 
 describe('Key Mapping', () => {
   it('check keyMappingReverse', () => {
-    Object.keys(keyMapping).forEach((c) => {
+    Object.keys(keyMapping).forEach(c => {
       expect(keyMappingReverse[keyMapping[c]]).toBe(c);
     });
   });
@@ -40,4 +40,3 @@ describe('cangjieToKey', () => {
     expect(cangjieToKey('手?田?水?口?廿?卜')).toBe('QWERTY');
   });
 });
-

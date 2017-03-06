@@ -42,8 +42,9 @@ export const keyToCangjie = (string: string): string => {
     .join('');
 };
 
-export const cangjieToKey = (string: string): string => string
-  .split('')
-  .filter(c => !!keyMappingReverse[c])
-  .map(c => keyMappingReverse[c])
-  .join('');
+export const cangjieToKey = (string: string): string =>
+  string
+    .split('')
+    .filter(c => !!keyMappingReverse[c])
+    .map(c => keyMappingReverse[c])
+    .join('');

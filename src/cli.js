@@ -9,10 +9,12 @@ async function decomposeAndOutput(words) {
   const string = words.join('');
   const results = await decompose(string);
   words.forEach(word => {
-    const output = results[word].map(result => {
-      const key = chalk.dim(`(${result.key})`);
-      return `${result.code} ${key}`;
-    }).join('\n    ');
+    const output = results[word]
+      .map(result => {
+        const key = chalk.dim(`(${result.key})`);
+        return `${result.code} ${key}`;
+      })
+      .join('\n    ');
     console.log(`${word}: ${output}`);
   });
 }
