@@ -12,7 +12,7 @@ export const loadHistory = async (): Promise<Array<string>> => {
         historyFileName,
         (err, data) => err ? reject(err) : resolve(data),
       ));
-    return history.toString().split('');
+    return history.toString().trim().split('');
   } catch (err) {
     return [];
   }
